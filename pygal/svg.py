@@ -65,18 +65,18 @@ class Svg(object):
         self.root.attrib['id'] = self.id.lstrip('#').rstrip()
         if graph.classes:
             self.root.attrib['class'] = ' '.join(graph.classes)
-        self.root.append(
-            etree.Comment(
-                u(
-                    'Generated with pygal %s (%s) ©Kozea 2012-2016 on %s' % (
-                        __version__, 'lxml' if etree.lxml else 'etree',
-                        date.today().isoformat()
-                    )
-                )
-            )
-        )
-        self.root.append(etree.Comment(u('http://pygal.org')))
-        self.root.append(etree.Comment(u('http://github.com/Kozea/pygal')))
+        # self.root.append(
+        #     etree.Comment(
+        #         u(
+        #             'Generated with pygal %s (%s) ©Kozea 2012-2016 on %s' % (
+        #                 __version__, 'lxml' if etree.lxml else 'etree',
+        #                 date.today().isoformat()
+        #             )
+        #         )
+        #     )
+        # )
+        # self.root.append(etree.Comment(u('http://pygal.org')))
+        # self.root.append(etree.Comment(u('http://github.com/Kozea/pygal')))
         self.defs = self.node(tag='defs')
         self.title = self.node(tag='title')
         self.title.text = graph.title or 'Pygal'
@@ -126,9 +126,10 @@ class Svg(object):
                 self.processing_instructions.append(
                     etree.PI(u('xml-stylesheet'), u('href="%s"' % css))
                 )
-        self.node(
-            self.defs, 'style', type='text/css'
-        ).text = '\n'.join(all_css)
+        if auto_css:
+            self.node(
+                self.defs, 'style', type='text/css'
+            ).text = '\n'.join(all_css)
 
     def add_scripts(self):
         """Add the js to the svg"""

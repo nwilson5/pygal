@@ -52,7 +52,10 @@ class BaseGraph(object):
         config(**kwargs)
         self.config = config
         self.state = None
-        self.uuid = str(uuid4())
+        if config.explicit_id:
+            self.uuid = config.explicit_id
+        else:
+            self.uuid = str(uuid4())
         self.raw_series = []
         self.xml_filters = []
 

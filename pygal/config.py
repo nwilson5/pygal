@@ -239,7 +239,7 @@ class Config(CommonConfig):
     )
 
     css = Key(
-        ('file://style.css', 'file://graph.css'), list, "Style",
+        ('file://base.css', 'file://style.css', 'file://graph.css'), list, "Style",
         "List of css file",
         "It can be any uri from file:///tmp/style.css to //domain/style.css",
         str
@@ -526,6 +526,8 @@ class Config(CommonConfig):
     no_prefix = Key(False, bool, "Misc", "Don't prefix css")
 
     inverse_y_axis = Key(False, bool, "Misc", "Inverse Y axis direction")
+
+    explicit_id = Key(None, str, "Misc", "Set an ID rather than using uuid")
 
 
 class SerieConfig(CommonConfig):
