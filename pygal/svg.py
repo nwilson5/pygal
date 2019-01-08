@@ -89,7 +89,7 @@ class Svg(object):
         colors = self.graph.style.get_colors(self.id, self.graph._order)
         strokes = self.get_strokes()
         all_css = []
-        auto_css = ['file://base.css']
+        auto_css = []#['file://base.css']
 
         if self.graph.style._google_fonts:
             auto_css.append(
