@@ -150,7 +150,7 @@ class Svg(object):
                 return o.to_dict()
             return json.JSONEncoder().default(o)
 
-        dct = get_js_dict()
+        dct = {k:v for k,v in get_js_dict().items() if k in ['height', 'width', 'tooltip_fancy_mode']}
         # Config adds
         dct['legends'] = [
             l.get('title') if isinstance(l, dict) else l
