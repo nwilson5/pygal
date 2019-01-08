@@ -67,18 +67,18 @@ class Svg(object):
         self.root.attrib['id'] = self.id.lstrip('#').rstrip()
         if graph.classes:
             self.root.attrib['class'] = ' '.join(graph.classes)
-        # self.root.append(
-        #     etree.Comment(
-        #         u(
-        #             'Generated with pygal %s (%s) ©Kozea 2012-2016 on %s' % (
-        #                 __version__, 'lxml' if etree.lxml else 'etree',
-        #                 date.today().isoformat()
-        #             )
-        #         )
-        #     )
-        # )
-        # self.root.append(etree.Comment(u('http://pygal.org')))
-        # self.root.append(etree.Comment(u('http://github.com/Kozea/pygal')))
+        self.root.append(
+            etree.Comment(
+                u(
+                    'Generated with pygal %s (%s) ©Kozea 2012-2016 on %s' % (
+                        __version__, 'lxml' if etree.lxml else 'etree',
+                        date.today().isoformat()
+                    )
+                )
+            )
+        )
+        self.root.append(etree.Comment(u('http://pygal.org')))
+        self.root.append(etree.Comment(u('http://github.com/Kozea/pygal')))
         self.defs = self.node(tag='defs')
         self.title = self.node(tag='title')
         self.title.text = graph.title or 'Pygal'
@@ -91,7 +91,7 @@ class Svg(object):
         colors = self.graph.style.get_colors(self.id, self.graph._order)
         strokes = self.get_strokes()
         all_css = []
-        auto_css = []#['file://base.css']
+        auto_css = ['file://base.css']
 
         if self.graph.style._google_fonts:
             auto_css.append(
