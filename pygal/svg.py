@@ -47,9 +47,7 @@ class Svg(object):
     def __init__(self, graph):
         """Create the svg helper with the chart instance"""
         self.graph = graph
-        if graph.explicit_id:
-            self.id = '#%s ' % graph.explicit_id
-        elif not graph.no_prefix:
+        if not graph.no_prefix:
             self.id = '#chart-%s ' % graph.uuid
         else:
             self.id = ''
