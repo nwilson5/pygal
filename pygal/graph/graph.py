@@ -197,7 +197,7 @@ class Graph(PublicApi):
             )
             y += .5 * self.style.label_font_size + 5
             text = self.svg.node(
-                guides, 'text', x=x, y=y, class_='major' if major else ''
+                guides, 'text', x=x, y=y-5, class_='major' if major else ''
             )
 
             text.text = truncate(label, truncation)
