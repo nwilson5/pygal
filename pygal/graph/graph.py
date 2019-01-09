@@ -601,7 +601,7 @@ class Graph(PublicApi):
         and interpolated points if interpolate option is specified
         """
         for serie in self.all_series:
-            serie.points = [(x_pos[i], round(v,2)) if v else v for i, v in enumerate(serie.values)]
+            serie.points = [(x_pos[i], round(v,2) if v else v) for i, v in enumerate(serie.values)]
             if serie.points and self.interpolate:
                 serie.interpolated = self._interpolate(x_pos, serie.values)
             else:
