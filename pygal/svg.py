@@ -254,9 +254,9 @@ class Svg(object):
         if origin_index == line_len:
             return
         if self.graph.horizontal:
-            coord_format = lambda xy: '%f %f' % (round(xy[1], 2), round(xy[0], 2))
+            coord_format = lambda xy: '%.2f %.2f' % (round(xy[1], 2), round(xy[0], 2))
         else:
-            coord_format = lambda xy: '%f %f' % (round(xy[0], 2), round(xy[1], 2))
+            coord_format = lambda xy: '%.2f %.2f' % (round(xy[0], 2), round(xy[1], 2))
 
         origin = coord_format(coords[origin_index])
         line = ' '.join([
@@ -423,7 +423,7 @@ class Svg(object):
 
     def confidence_interval(self, node, x, low, high, width=7):
         if self.graph.horizontal:
-            fmt = lambda xy: '%f %f' % (xy[1], xy[0])
+            fmt = lambda xy: '%.2f %.2f' % (xy[1], xy[0])
         else:
             fmt = coord_format
 

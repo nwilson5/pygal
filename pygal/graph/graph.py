@@ -167,7 +167,7 @@ class Graph(PublicApi):
             self.svg.node(
                 axis,
                 'path',
-                d='M%f %f v%f' % (0, 0, self.view.height),
+                d='M%.2f %.2f v%.2f' % (0, 0, self.view.height),
                 class_='line'
             )
             lastlabel = None
@@ -188,7 +188,7 @@ class Graph(PublicApi):
             self.svg.node(
                 guides,
                 'path',
-                d='M%f %f v%f' % (x or 0, 0, self.view.height),
+                d='M%.2f %.2f v%.2f' % (x or 0, 0, self.view.height),
                 class_='%s%s%sline' % (
                     'axis ' if label == "0" else '', 'major '
                     if major else '', 'guide '
@@ -210,7 +210,7 @@ class Graph(PublicApi):
                 ).text = self._x_format(position)
 
             if self.x_label_rotation:
-                text.attrib['transform'] = "rotate(%d %f %f)" % (
+                text.attrib['transform'] = "rotate(%d %.2f %.2f)" % (
                     self.x_label_rotation, x, y
                 )
                 if self.x_label_rotation >= 180:
@@ -224,7 +224,7 @@ class Graph(PublicApi):
             self.svg.node(
                 axis,
                 'path',
-                d='M%f %f v%f' % (self.view.width, 0, self.view.height),
+                d='M%.2f %.2f v%.2f' % (self.view.width, 0, self.view.height),
                 class_='line'
             )
 
@@ -247,7 +247,7 @@ class Graph(PublicApi):
                 )
                 text.text = label
                 if self.x_label_rotation:
-                    text.attrib['transform'] = "rotate(%d %f %f)" % (
+                    text.attrib['transform'] = "rotate(%d %.2f %.2f)" % (
                         -self.x_label_rotation, x, y
                     )
                     if self.x_label_rotation >= 180:
@@ -271,7 +271,7 @@ class Graph(PublicApi):
             self.svg.node(
                 axis,
                 'path',
-                d='M%f %f h%f' % (
+                d='M%.2f %.2f h%.2f' % (
                     0, 0 if self.inverse_y_axis else self.view.height,
                     self.view.width
                 ),
@@ -299,7 +299,7 @@ class Graph(PublicApi):
                 self.svg.node(
                     guides,
                     'path',
-                    d='M%f %f h%f' % (0, y, self.view.width),
+                    d='M%.2f %.2f h%.2f' % (0, y, self.view.width),
                     class_='%s%s%sline' % (
                         'axis ' if label == "0" else '', 'major '
                         if major else '', 'guide ' if position != 0 else ''
@@ -316,7 +316,7 @@ class Graph(PublicApi):
             text.text = label
 
             if self.y_label_rotation:
-                text.attrib['transform'] = "rotate(%d %f %f)" % (
+                text.attrib['transform'] = "rotate(%d %.2f %.2f)" % (
                     self.y_label_rotation, x, y
                 )
                 if 90 < self.y_label_rotation < 270:
@@ -348,7 +348,7 @@ class Graph(PublicApi):
                 )
                 text.text = label
                 if self.y_label_rotation:
-                    text.attrib['transform'] = "rotate(%d %f %f)" % (
+                    text.attrib['transform'] = "rotate(%d %.2f %.2f)" % (
                         self.y_label_rotation, x, y
                     )
                     if 90 < self.y_label_rotation < 270:
@@ -506,7 +506,7 @@ class Graph(PublicApi):
                     x=self._legend_at_left_width,
                     y=i * (self.style.title_font_size + self.spacing) + yc
                 )
-                text.attrib['transform'] = "rotate(%d %f %f)" % (
+                text.attrib['transform'] = "rotate(%d %.2f %.2f)" % (
                     -90, self._legend_at_left_width, yc
                 )
                 text.text = title_line
