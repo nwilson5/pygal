@@ -547,8 +547,8 @@ class Graph(PublicApi):
                 classes.append('top')
             classes = ' '.join(classes)
 
-        self.svg.node(node, 'desc', class_="x " + classes).text = to_str(x)
-        self.svg.node(node, 'desc', class_="y " + classes).text = to_str(y)
+        self.svg.node(node, 'desc', class_="x " + classes).text = to_str(round(x, 2))
+        self.svg.node(node, 'desc', class_="y " + classes).text = to_str(round(y, 2))
         if xlabel:
             self.svg.node(node, 'desc', class_="x_label").text = to_str(xlabel)
 
@@ -601,7 +601,7 @@ class Graph(PublicApi):
         and interpolated points if interpolate option is specified
         """
         for serie in self.all_series:
-            serie.points = [(x_pos[i], v) for i, v in enumerate(serie.values)]
+            serie.points = [(x_pos[i], round(v,2)) for i, v in enumerate(serie.values)]
             if serie.points and self.interpolate:
                 serie.interpolated = self._interpolate(x_pos, serie.values)
             else:
@@ -812,7 +812,7 @@ class Graph(PublicApi):
         if not metadata or 'ci' not in metadata:
             return
         ci = metadata['ci']
-        ci['point_estimate'] = value
+        ci['point_estimate'] = round(value, 2)
 
         low, high = getattr(
             stats, 'confidence_interval_%s' % ci.get('type', 'manual')

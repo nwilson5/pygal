@@ -192,15 +192,9 @@ class Svg(object):
                 if in_attrib_and_number(pos):
                     attrib[pos] = attrib[pos] - attrib[dim]
 
-        print('NODEONDEONODNEO', parent, tag, attrib)
         for key, value in dict(attrib).items():
             if value is None:
                 del attrib[key]
-            print('pygal_val::: ', value, type(value))
-            if type(value) is float:
-                attrib[key] = round(value, 2)
-            elif type(value) is str and value.replace('.','',1).isdigit():
-                attrib[key] = round(value, 2)
 
             attrib[key] = to_str(value)
             if key.endswith('_'):
@@ -257,9 +251,9 @@ class Svg(object):
         if origin_index == line_len:
             return
         if self.graph.horizontal:
-            coord_format = lambda xy: '%f %f' % (xy[1], xy[0])
+            coord_format = lambda xy: '%f %f' % (round(xy[1], 2), round(xy[0], 2))
         else:
-            coord_format = lambda xy: '%f %f' % xy
+            coord_format = lambda xy: '%f %f' % (round(xy[0], 2), round(xy[1], 2))
 
         origin = coord_format(coords[origin_index])
         line = ' '.join([
