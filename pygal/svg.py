@@ -195,6 +195,8 @@ class Svg(object):
         for key, value in dict(attrib).items():
             if value is None:
                 del attrib[key]
+            if type(value) is float:
+                round(value, 2)
 
             attrib[key] = to_str(value)
             if key.endswith('_'):
