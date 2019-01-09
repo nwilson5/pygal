@@ -191,10 +191,12 @@ class Svg(object):
                 attrib[dim] = -attrib[dim]
                 if in_attrib_and_number(pos):
                     attrib[pos] = attrib[pos] - attrib[dim]
-
+        print('pgattr1', attrib)
         for key, value in dict(attrib).items():
             if value is None:
                 del attrib[key]
+            if isinstance(attrib[key], Number):
+                attrib[key] = round(value, 2)
 
             attrib[key] = to_str(value)
             if key.endswith('_'):
@@ -204,6 +206,7 @@ class Svg(object):
                 attrib[etree.QName('http://www.w3.org/1999/xlink',
                                    key)] = attrib[key]
                 del attrib[key]
+        print('pgattr1', attrib)
         return etree.SubElement(parent, tag, attrib)
 
     def transposable_node(self, parent=None, tag='g', attrib=None, **extras):
