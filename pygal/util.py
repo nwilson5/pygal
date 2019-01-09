@@ -347,7 +347,7 @@ def coord_diff(x, y):
 
 
 def coord_format(x):
-    return '%f %f' % x
+    return '%.2f %.2f' % x
 
 
 def coord_dual(r):
