@@ -192,11 +192,15 @@ class Svg(object):
                 if in_attrib_and_number(pos):
                     attrib[pos] = attrib[pos] - attrib[dim]
 
+        print('NODEONDEONODNEO', parent, tag, attrib)
         for key, value in dict(attrib).items():
             if value is None:
                 del attrib[key]
+            print('pygal_val::: ', value, type(value))
             if type(value) is float:
-                round(value, 2)
+                attrib[key] = round(value, 2)
+            elif type(value) is str and value.replace('.','',1).isdigit():
+                attrib[key] = round(value, 2)
 
             attrib[key] = to_str(value)
             if key.endswith('_'):
