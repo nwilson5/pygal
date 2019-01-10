@@ -230,17 +230,17 @@ class Svg(object):
         return dict(
             plot=self.node(
                 self.graph.nodes['plot'],
-                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index-1]
+                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index]
                                                      if self.graph.color_classes else str(serie.index))
             ),
             overlay=self.node(
                 self.graph.nodes['overlay'],
-                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index-1]
+                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index]
                                                      if self.graph.color_classes else str(serie.index))
             ),
             text_overlay=self.node(
                 self.graph.nodes['text_overlay'],
-                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index-1]
+                class_='series serie-%d color-%s' % (serie.index, self.graph.color_classes[serie.index]
                                                      if self.graph.color_classes else str(serie.index))
             )
         )
