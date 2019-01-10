@@ -446,7 +446,8 @@ class Graph(PublicApi):
                     ) / 2,
                     width=self.legend_box_size,
                     height=self.legend_box_size,
-                    class_="color-%d reactive" % serie_number
+                    class_="color-%s reactive" % (self.color_classes[serie_number - 1]
+                                                  if self.color_classes else str(serie_number))
                 )
 
                 if isinstance(title, dict):

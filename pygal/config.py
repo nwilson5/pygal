@@ -529,6 +529,8 @@ class Config(CommonConfig):
 
     explicit_id = Key(None, str, "Misc", "Set an ID rather than using uuid")
 
+    color_classes = Key(None, list, "Misc", "An ordered list of color classes")
+
 
 class SerieConfig(CommonConfig):
     """Class holding serie config values"""
