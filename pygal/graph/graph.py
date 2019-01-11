@@ -539,7 +539,7 @@ class Graph(PublicApi):
 
     def _tooltip_data(self, node, value, x, y, classes=None, xlabel=None):
         """Insert in desc tags informations for the javascript tooltip"""
-        self.svg.node(node, 'desc', class_="value pizza").text = value
+        self.svg.node(node, 'desc', class_="value").text = value
         if classes is None:
             classes = []
             if x > self.view.width / 2:
