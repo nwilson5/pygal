@@ -433,7 +433,7 @@ class Graph(PublicApi):
                 legend = self.svg.node(
                     secondary_legends if is_secondary else legends,
                     class_='legend reactive activate-serie',
-                    id="activate-serie-%d" % serie_number
+                    id="%s-activate-serie-%d" % (self.uuid, serie_number)
                 )
                 self.svg.node(
                     legend,
