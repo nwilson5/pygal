@@ -20,8 +20,9 @@
 
 import sys
 
-import pygal
 import pytest
+
+import pygal
 from pygal.etree import etree
 
 from . import get_data
@@ -48,9 +49,9 @@ def pytest_generate_tests(metafunc):
     if hasattr(sys, 'pypy_version_info'):
         etree.to_etree()
 
-    if "Chart" in metafunc.funcargnames:
+    if "Chart" in metafunc.fixturenames:
         metafunc.parametrize("Chart", pygal.CHARTS)
-    if "datas" in metafunc.funcargnames:
+    if "datas" in metafunc.fixturenames:
         metafunc.parametrize(
             "datas", [[("Serie %d" % i, get_data(i)) for i in range(s)]
                       for s in (5, 1, 0)]
